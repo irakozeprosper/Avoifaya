@@ -7,6 +7,7 @@ import NewDevice from "./routes/new-device/page";
 import Subscriptions from "./routes/subscriptions/page";
 import Mapping from "./routes/device-mapping/page";
 import Users from "./routes/users/page";
+import Login from "./routes/login/page";
 function App() {
     const router = createBrowserRouter([
         {
@@ -50,6 +51,10 @@ function App() {
                     element: <h1 className="title">Settings</h1>,
                 },
             ],
+        },
+        {
+            path: "/login",
+            element: <Login />,
         },
     ]);
     return (
