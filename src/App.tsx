@@ -8,6 +8,8 @@ import Subscriptions from "./routes/subscriptions/page";
 import Mapping from "./routes/device-mapping/page";
 import Users from "./routes/users/page";
 import Login from "./routes/login/page";
+import PageNotFound from "./routes/page-not-found/page";
+import ForgotPassword from "./routes/forgot-password/page";
 function App() {
     const router = createBrowserRouter([
         {
@@ -55,6 +57,14 @@ function App() {
         {
             path: "/login",
             element: <Login />,
+        },
+        {
+            path: "*",
+            element: <PageNotFound />,
+        },
+        {
+            path: "/forgot-password",
+            element: <ForgotPassword />,
         },
     ]);
     return (

@@ -1,4 +1,4 @@
-import { Bell, ChevronsLeft, Moon, Search, Sun } from "lucide-react";
+import { Bell, ChevronsLeft, Moon, Sun } from "lucide-react";
 import { useTheme } from "../hooks/use-theme";
 import PropTypes from "prop-types";
 import profileImg from "../assets/avoifaya.png";
@@ -20,19 +20,6 @@ export const Header = ({ collapsed, setCollapsed }: HeaderProps) => {
                 >
                     <ChevronsLeft className={collapsed ? "rotate-180" : ""} />
                 </button>
-                <div className="input">
-                    <Search
-                        size={20}
-                        className="text-slate-300"
-                    />
-                    <input
-                        type="text"
-                        name="search"
-                        id="search"
-                        placeholder="Search..."
-                        className="w-full bg-transparent text-slate-900 outline-0 placeholder:text-slate-300 dark:text-slate-50"
-                    />
-                </div>
             </div>
             <div className="flex items-center gap-x-3">
                 <button
