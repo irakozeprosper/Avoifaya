@@ -3,10 +3,12 @@ import { Sun, Moon, Eye, EyeOff } from "lucide-react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useTheme } from "../../hooks/use-theme";
+import useLogin from "../../hooks/useLogin";
 
 export default function LoginPage() {
     const [showPassword, setShowPassword] = useState(false);
     const { theme, setTheme } = useTheme();
+    const { handleLogin, loading, error } = useLogin();
 
     const validationSchema = Yup.object({
         email: Yup.string().email("Invalid email address").required("Email is required"),
@@ -35,7 +37,9 @@ export default function LoginPage() {
                     <Formik
                         initialValues={{ email: "", password: "", remember: false }}
                         validationSchema={validationSchema}
-                        onSubmit={(values) => console.log(values)}
+                        onSubmit={({ email, password }) => {
+                            handleLogin(email, password);
+                        }}
                     >
                         {() => (
                             <Form className="flex flex-col gap-2">
@@ -100,10 +104,13 @@ export default function LoginPage() {
 
                                 <button
                                     type="submit"
+                                    disabled={loading}
                                     className="px-5 py-3 bg-indigo-600 text-white rounded-full hover:bg-indigo-500"
                                 >
-                                    Sign in
+                                    {loading ? "Signing in..." : "Sign in"}
                                 </button>
+
+                                {error && <div className="text-red-500 text-xs mt-2">{error}</div>}
                             </Form>
                         )}
                     </Formik>
